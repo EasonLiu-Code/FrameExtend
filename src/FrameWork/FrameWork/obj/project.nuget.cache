@@ -1,41 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "eClm55zrpUo=",
+  "dgSpecHash": "zS8gaP8SSzU=",
   "success": true,
   "projectFilePath": "/Users/liuyusong/Code/FrameExtend/src/FrameWork/FrameWork/FrameWork.csproj",
   "expectedPackageFiles": [
     "/Users/liuyusong/.nuget/packages/microsoft.aspnetcore.openapi/9.0.0/microsoft.aspnetcore.openapi.9.0.0.nupkg.sha512",
-    "/Users/liuyusong/.nuget/packages/microsoft.openapi/1.6.17/microsoft.openapi.1.6.17.nupkg.sha512"
+    "/Users/liuyusong/.nuget/packages/microsoft.openapi/1.6.17/microsoft.openapi.1.6.17.nupkg.sha512",
+    "/Users/liuyusong/.nuget/packages/scalar.aspnetcore/1.2.45/scalar.aspnetcore.1.2.45.nupkg.sha512"
   ],
   "logs": [
-    {
-      "code": "NU1801",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Unable to load the service index for source https://tfs.1hai.cn/tfs/Front.Dev/_packaging/NugetTfs/nuget/v3/index.json.",
-      "libraryId": "Microsoft.AspNetCore.OpenApi"
-    },
-    {
-      "code": "NU1801",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Unable to load the service index for source https://tfs.1hai.cn/tfs/Front.Dev/_packaging/NugetTfs/nuget/v3/index.json.",
-      "libraryId": "Microsoft.AspNetCore.OpenApi"
-    },
-    {
-      "code": "NU1801",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Unable to load the service index for source https://tfs.1hai.cn/tfs/Front.Dev/_packaging/NugetTfs/nuget/v3/index.json.",
-      "libraryId": "Microsoft.OpenApi"
-    },
-    {
-      "code": "NU1801",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Unable to load the service index for source https://tfs.1hai.cn/tfs/Front.Dev/_packaging/NugetTfs/nuget/v3/index.json.",
-      "libraryId": "Microsoft.OpenApi"
-    },
     {
       "code": "NU1900",
       "level": "Warning",
