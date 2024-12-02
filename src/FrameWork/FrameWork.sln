@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameWork", "FrameWork\FrameWork.csproj", "{3C49BB21-4E58-4942-AF20-519D04D33745}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameWork.Host", "FrameWork.Host\FrameWork.Host.csproj", "{3C49BB21-4E58-4942-AF20-519D04D33745}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameWork.Application", "FrameWork.Application\FrameWork.Application.csproj", "{391441D3-83DD-462D-98F4-B825739931D5}"
 EndProject
