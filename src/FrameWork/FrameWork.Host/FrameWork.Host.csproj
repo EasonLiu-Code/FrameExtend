@@ -12,4 +12,10 @@
         <PackageReference Include="Scalar.AspNetCore" Version="1.2.45" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\FrameWork.Application\FrameWork.Application.csproj" />
+      <ProjectReference Include="..\FrameWork.Domain\FrameWork.Domain.csproj" />
+      <ProjectReference Include="..\FrameWork.Infrastructure\FrameWork.Infrastructure.csproj" />
+    </ItemGroup>
+
 </Project>

@@ -1,6 +1,12 @@
+using FrameWork.Application;
+using FrameWork.Domain;
+using FrameWork.Infrastructure;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddApplication();
+builder.Services.AddDomain();
+builder.Services.AddInfrastructure();
 builder.Services.AddOpenApi(options =>
 {
     options.AddDocumentTransformer((document, context, cancellationToken) =>
