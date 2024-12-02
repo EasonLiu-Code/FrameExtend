@@ -1,10 +1,19 @@
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+builder.Services.AddOpenApi(options =>
+{
+    options.AddDocumentTransformer((document, context, cancellationToken) =>
+    {
+        document.Info = new()
+        {
+            Title = "基础框架扩展",
+            Version = "v1",
+            Description = "技术扩展相关"
+        };
+        return Task.CompletedTask;
+    });
+});
 
 var app = builder.Build();
 
