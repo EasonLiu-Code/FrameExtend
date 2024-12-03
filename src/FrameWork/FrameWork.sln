@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameWork.Domain", "FrameWo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameWork.Persistence", "FrameWork.Persistence\FrameWork.Persistence.csproj", "{8648094D-7E1C-49F2-A3F7-B20598FFC7A1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameWork.Test", "FrameWork.Test\FrameWork.Test.csproj", "{BE305B43-6DC1-43BF-B0C1-B5CF3D3C264B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{8648094D-7E1C-49F2-A3F7-B20598FFC7A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8648094D-7E1C-49F2-A3F7-B20598FFC7A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8648094D-7E1C-49F2-A3F7-B20598FFC7A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE305B43-6DC1-43BF-B0C1-B5CF3D3C264B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE305B43-6DC1-43BF-B0C1-B5CF3D3C264B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE305B43-6DC1-43BF-B0C1-B5CF3D3C264B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE305B43-6DC1-43BF-B0C1-B5CF3D3C264B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
