@@ -6,8 +6,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameWork.Application", "Fr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameWork.Domain", "FrameWork.Domain\FrameWork.Domain.csproj", "{C6127E2E-4753-44F9-9E2E-6C033EB52372}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameWork.Test", "FrameWork.Test\FrameWork.Test.csproj", "{6FD7CE8A-2000-4D33-BE6F-9636B8EA9511}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameWork.Infrastructure", "FrameWork.Infrastructure\FrameWork.Infrastructure.csproj", "{951410DE-AA3B-4CCF-93BB-65DC842D5D74}"
 EndProject
 Global
@@ -28,10 +26,6 @@ Global
 		{C6127E2E-4753-44F9-9E2E-6C033EB52372}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6127E2E-4753-44F9-9E2E-6C033EB52372}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6127E2E-4753-44F9-9E2E-6C033EB52372}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6FD7CE8A-2000-4D33-BE6F-9636B8EA9511}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6FD7CE8A-2000-4D33-BE6F-9636B8EA9511}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6FD7CE8A-2000-4D33-BE6F-9636B8EA9511}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6FD7CE8A-2000-4D33-BE6F-9636B8EA9511}.Release|Any CPU.Build.0 = Release|Any CPU
 		{951410DE-AA3B-4CCF-93BB-65DC842D5D74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{951410DE-AA3B-4CCF-93BB-65DC842D5D74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{951410DE-AA3B-4CCF-93BB-65DC842D5D74}.Release|Any CPU.ActiveCfg = Release|Any CPU
