@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameWork.Domain", "FrameWo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameWork.Infrastructure", "FrameWork.Infrastructure\FrameWork.Infrastructure.csproj", "{951410DE-AA3B-4CCF-93BB-65DC842D5D74}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameWork.Test", "FrameWork.Test\FrameWork.Test.csproj", "{EAEE628A-5106-47BB-9D91-01D22D702283}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{951410DE-AA3B-4CCF-93BB-65DC842D5D74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{951410DE-AA3B-4CCF-93BB-65DC842D5D74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{951410DE-AA3B-4CCF-93BB-65DC842D5D74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAEE628A-5106-47BB-9D91-01D22D702283}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAEE628A-5106-47BB-9D91-01D22D702283}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAEE628A-5106-47BB-9D91-01D22D702283}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAEE628A-5106-47BB-9D91-01D22D702283}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
