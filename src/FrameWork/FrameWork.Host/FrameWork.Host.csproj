@@ -8,7 +8,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Carter" Version="9.0.0" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Caching.Hybrid" Version="9.0.0-preview.9.24556.5" />
+        <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="9.0.0" />
         <PackageReference Include="Scalar.AspNetCore" Version="1.2.45" />
     </ItemGroup>
 
@@ -16,6 +19,10 @@
       <ProjectReference Include="..\FrameWork.Application\FrameWork.Application.csproj" />
       <ProjectReference Include="..\FrameWork.Domain\FrameWork.Domain.csproj" />
       <ProjectReference Include="..\FrameWork.Persistence\FrameWork.Persistence.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="EndPoints\" />
     </ItemGroup>
 
 </Project>

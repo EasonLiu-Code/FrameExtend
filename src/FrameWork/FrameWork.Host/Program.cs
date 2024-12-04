@@ -1,12 +1,34 @@
+using Carter;
 using FrameWork.Application;
 using FrameWork.Domain;
 using FrameWork.Persistence;
+using Microsoft.Extensions.Caching.Hybrid;
 using Scalar.AspNetCore;
 
+
+static void SetThreadPool()
+{
+    ThreadPool.GetMinThreads(out var minWorkerThreads, out var minCompletionPortThreads);
+    ThreadPool.SetMinThreads(
+        minWorkerThreads < 100 ? 100 : minWorkerThreads,
+        minCompletionPortThreads < 100 ? 100 : minCompletionPortThreads);
+    ThreadPool.GetMaxThreads(out var maxWorkerThreads, out var maxCompletionPortThreads);
+    ThreadPool.SetMaxThreads(maxWorkerThreads, maxCompletionPortThreads <= 3000 ? 3000 : maxCompletionPortThreads);
+}
+SetThreadPool();
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddApplication();
 builder.Services.AddDomain();
 builder.Services.AddPersistence();
+
+//cache HybridCache后续替换StackExchangeRedisCache
+//builder.Services.AddStackExchangeRedisCache();
+//builder.Services.AddHybridCache();
+
+//Carter
+builder.Services.AddCarter();
+
+//API doc
 builder.Services.AddOpenApi(options =>
 {
     options.AddDocumentTransformer((document, context, cancellationToken) =>
@@ -50,7 +72,7 @@ app.MapGet("/weatherforecast", () =>
         return forecast;
     })
     .WithName("GetWeatherForecast");
-
+app.MapCarter();
 app.Run();
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
