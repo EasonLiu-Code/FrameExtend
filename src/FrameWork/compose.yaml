@@ -4,6 +4,11 @@
     build:
       context: .
       dockerfile: FrameWork.Host/Dockerfile
+    environment:
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
+      - OTEL_RESOURCE_ATTRIBUTES=service.name=framework-host
+    networks:
+      - elk
 
   elasticsearch:
     container_name: els
@@ -12,9 +17,11 @@
       - 9200:9200
     volumes:
       - ./data/elasticsearch-data:/var/lib/elasticsearch/data
+    environment:
+      - discovery.type=single-node
     networks:
       - elk
-    
+  
   kibana:
     container_name: kibana
     image: kibana:8.10.1
@@ -24,9 +31,22 @@
       - elasticsearch
     environment:
       - ELASTICSEARCH_URL=http://elasticsearch:9200
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
     networks:
       - elk
-  
+
+  otel-collector:
+    container_name: otel-collector
+    image: otel/opentelemetry-collector:latest
+    ports:
+      - 4317:4317 # For gRPC
+      - 55681:55681 # For HTTP
+    volumes:
+      - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
+    command: ["--config=/etc/otel-collector-config.yaml"]
+    networks:
+      - elk
+
 networks:
   elk:
     driver: bridge

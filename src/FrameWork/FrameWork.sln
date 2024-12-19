@@ -13,6 +13,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B3A5F725-316F-4751-AB38-3AC8FD5C95C8}"
 	ProjectSection(SolutionItems) = preProject
 		compose.yaml = compose.yaml
+		otel-collector-config.yaml = otel-collector-config.yaml
 	EndProjectSection
 EndProject
 Global

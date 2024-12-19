@@ -3,6 +3,10 @@ using FrameWork.Application;
 using FrameWork.Domain;
 using FrameWork.Persistence;
 using Microsoft.Extensions.Caching.Hybrid;
+using OpenTelemetry.Logs;
+using OpenTelemetry.Metrics;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 using Scalar.AspNetCore;
 
 
@@ -21,7 +25,19 @@ builder.Services.AddApplication();
 builder.Services.AddDomain();
 builder.Services.AddPersistence();
 
-//cache HybridCache后续替换StackExchangeRedisCache
+builder.Logging.ClearProviders();
+builder.Logging.AddOpenTelemetry(options =>
+{
+    options.SetResourceBuilder(
+        ResourceBuilder.CreateDefault()
+            .AddService(serviceName: CoreConstants.ServerName, serviceVersion: CoreConstants.ServiceVersion));
+    options.AddOtlpExporter(otlpOptions =>
+    {
+        otlpOptions.Endpoint = new Uri(CoreConstants.OpenTelemetryCollectorEndpoint);
+    });
+});
+
+//HybridCache后续替换StackExchangeRedisCache
 //builder.Services.AddStackExchangeRedisCache();
 //builder.Services.AddHybridCache();
 
