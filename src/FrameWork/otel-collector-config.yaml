@@ -9,23 +9,17 @@ processors:
     timeout: 1s
 
 exporters:
-  debug: {}
-  logstash:
-    endpoint: "logstash:5044"  # 使用 Logstash 的端口
-  elasticsearch:
-    endpoints: ["http://elasticsearch:9200"]
-    username: "admin"          # 添加用户名
-    password: "abcdefg"        # 添加密码 必须string 不让number
-    index: "otel-logs"         # Elasticsearch 索引名称
-    pipeline: "default-pipeline"  # 如果有自定义的 Pipeline
+  otlphttp:  # 使用 OTLP HTTP 导出器
+    endpoint: "http://logstash:5044"  # Logstash 接收 OTLP 数据的端口
+    compression: "gzip"  # 使用 gzip 压缩
 
 service:
   pipelines:
     logs:
       receivers: [otlp]
       processors: [batch]
-      exporters: [logstash, elasticsearch]  # 同时导出到 Logstash 和 Elasticsearch
+      exporters: [otlphttp]
     traces:
       receivers: [otlp]
       processors: [batch]
-      exporters: [logstash, elasticsearch]  # 同时导出到 Logstash 和 Elasticsearch
+      exporters: [otlphttp]
