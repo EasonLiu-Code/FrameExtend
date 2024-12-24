@@ -32,6 +32,8 @@
     environment:
       - ELASTICSEARCH_URL=http://elasticsearch:9200
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      - ELASTICSEARCH_USERNAME=admin  # 添加用户名
+      - ELASTICSEARCH_PASSWORD=123456  # 添加密码
     networks:
       - elk
 
