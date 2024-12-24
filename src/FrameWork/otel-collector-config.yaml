@@ -6,20 +6,38 @@ receivers:
 
 processors:
   batch:
-    timeout: 1s
-
+  memory_limiter:
+    limit_mib: 400
+    spike_limit_mib: 100
+    check_interval: 1s
+    
 exporters:
-  otlphttp:  # 使用 OTLP HTTP 导出器
-    endpoint: "http://logstash:5044"  # Logstash 接收 OTLP 数据的端口
-    compression: "gzip"  # 使用 gzip 压缩
+  debug: {}
+
+
+  elasticsearch:
+    endpoints: ["http://elasticsearch:9200"]
+    index: "otel-logs"
+
+  prometheus:
+    endpoint: "0.0.0.0:8889"
+
+  otlphttp:
+    endpoint: "http://otel-collector:4317"
 
 service:
   pipelines:
     logs:
       receivers: [otlp]
       processors: [batch]
-      exporters: [otlphttp]
+      exporters: [elasticsearch, debug]
+
     traces:
       receivers: [otlp]
       processors: [batch]
-      exporters: [otlphttp]
+      exporters: [elasticsearch, debug]
+
+    metrics:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [prometheus]
