@@ -49,8 +49,7 @@
     command: ["--config=/etc/otel-collector-config.yaml"]
     networks:
       - elk
-  
-  # 新增 Logstash 服务，用于接收 OTLP 数据并推送到 Elasticsearch
+
   logstash:
     container_name: logstash
     image: docker.elastic.co/logstash/logstash:8.10.1
@@ -60,7 +59,7 @@
       - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
     networks:
       - elk
-  
+
   prometheus:
     container_name: prometheus
     image: prom/prometheus:latest
@@ -87,11 +86,10 @@
       - grafana_data:/var/lib/grafana
     networks:
       - elk
+
 volumes:
   grafana_data:
-    
+
 networks:
   elk:
     driver: bridge
-  
-    
