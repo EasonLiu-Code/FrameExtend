@@ -49,6 +49,7 @@
     command: ["--config=/etc/otel-collector-config.yaml"]
     networks:
       - elk
+  
   prometheus:
     container_name: prometheus
     image: prom/prometheus:latest
