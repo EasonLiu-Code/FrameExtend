@@ -33,7 +33,7 @@
       - ELASTICSEARCH_URL=http://elasticsearch:9200
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
       - ELASTICSEARCH_USERNAME=admin  # 添加用户名
-      - ELASTICSEARCH_PASSWORD=123456  # 添加密码
+      - ELASTICSEARCH_PASSWORD=abcdefg  # 添加密码
     networks:
       - elk
 
@@ -47,6 +47,17 @@
     volumes:
       - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
     command: ["--config=/etc/otel-collector-config.yaml"]
+    networks:
+      - elk
+  
+  # 新增 Logstash 服务，用于接收 OTLP 数据并推送到 Elasticsearch
+  logstash:
+    container_name: logstash
+    image: docker.elastic.co/logstash/logstash:8.10.1
+    ports:
+      - "5044:5044"  # OTLP 接收端口
+    volumes:
+      - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
     networks:
       - elk
   
