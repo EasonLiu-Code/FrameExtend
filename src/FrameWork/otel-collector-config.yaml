@@ -2,42 +2,33 @@ receivers:
   otlp:
     protocols:
       grpc:
+        endpoint: 0.0.0.0:4317
       http:
+        endpoint: 0.0.0.0:55681
 
 processors:
-  batch:
-  memory_limiter:
-    limit_mib: 400
-    spike_limit_mib: 100
-    check_interval: 1s
-    
+  batch:  # 批量处理数据提升性能
+
 exporters:
-  debug: {}
-
-
+  debug:
+    loglevel: debug
+  prometheus:
+    endpoint: "prometheus:9090"  # 导出指标到 Prometheus
   elasticsearch:
     endpoints: ["http://elasticsearch:9200"]
-    index: "otel-logs"
-
-  prometheus:
-    endpoint: "0.0.0.0:8889"
-
-  otlphttp:
-    endpoint: "http://otel-collector:4317"
+    logs_index: "app-logs"  # 日志索引名称
 
 service:
   pipelines:
-    logs:
-      receivers: [otlp]
-      processors: [batch]
-      exporters: [elasticsearch, debug]
-
     traces:
       receivers: [otlp]
       processors: [batch]
-      exporters: [elasticsearch, debug]
-
+      exporters: [elasticsearch]  # 导出追踪到 ES
     metrics:
       receivers: [otlp]
       processors: [batch]
-      exporters: [prometheus]
+      exporters: [prometheus, elasticsearch]  # 导出指标到 Prometheus 和 ES
+    logs:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [elasticsearch]  # 导出日志到 ES

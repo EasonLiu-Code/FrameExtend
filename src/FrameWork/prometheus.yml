@@ -1,7 +1,10 @@
-global:
-  scrape_interval: 15s
 scrape_configs:
   - job_name: 'otel-collector'
-    scrape_interval: 10s
+    scrape_interval: 5s
     static_configs:
-      - targets: ['otel-collector:8889'] 
+      - targets: ['otel-collector:8888']  # 假设 Collector 暴露 metrics 在 8888 端口
+
+  - job_name: 'dotnet-app'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['framework.host:80']  # 如果应用直接暴露 metrics

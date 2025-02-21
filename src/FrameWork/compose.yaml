@@ -1,9 +1,12 @@
 ﻿services:
   framework.host:
+
     image: framework.host
     build:
       context: .
       dockerfile: FrameWork.Host/Dockerfile
+    depends_on:
+      - otel-collector
     environment:
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
       - OTEL_RESOURCE_ATTRIBUTES=service.name=framework-host
@@ -19,6 +22,8 @@
       - ./data/elasticsearch-data:/var/lib/elasticsearch/data
     environment:
       - discovery.type=single-node
+      - ELASTIC_PASSWORD="admin123"  # 设置密码
+      - xpack.security.enabled=true  # 启用安全
     networks:
       - elk
   
@@ -32,6 +37,8 @@
     environment:
       - ELASTICSEARCH_URL=http://elasticsearch:9200
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      - ELASTICSEARCH_USERNAME=elastic
+      - ELASTICSEARCH_PASSWORD=admin123
     networks:
       - elk
 

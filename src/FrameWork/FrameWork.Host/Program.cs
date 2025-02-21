@@ -25,17 +25,28 @@ builder.Services.AddApplication();
 builder.Services.AddDomain();
 builder.Services.AddPersistence();
 
-builder.Logging.ClearProviders();
-builder.Logging.AddOpenTelemetry(options =>
-{
-    options.SetResourceBuilder(
-        ResourceBuilder.CreateDefault()
-            .AddService(serviceName: CoreConstants.ServerName, serviceVersion: CoreConstants.ServiceVersion));
-    options.AddOtlpExporter(otlpOptions =>
+#region otel
+//OpenTelemetry
+builder.Services.AddOpenTelemetry()
+    .ConfigureResource(resource => resource.AddService(CoreConstants.OpenTelemetryConfigureResource))
+    .WithMetrics(metrics =>
     {
-        otlpOptions.Endpoint = new Uri(CoreConstants.OpenTelemetryCollectorEndpoint);
+        metrics
+            .AddAspNetCoreInstrumentation()
+            .AddHttpClientInstrumentation();
+        metrics.AddOtlpExporter(opt=>opt.Endpoint=new Uri(CoreConstants.OpenTelemetryCollectorEndpoint));
+    })
+    .WithTracing(tracing =>
+    {
+        tracing
+            .AddAspNetCoreInstrumentation()
+            .AddHttpClientInstrumentation();
+        tracing.AddOtlpExporter(opt=>opt.Endpoint=new Uri(CoreConstants.OpenTelemetryCollectorEndpoint));
     });
-});
+//ILogger配置
+builder.Logging.AddOpenTelemetry(logging => logging.AddOtlpExporter(opt=>opt.Endpoint=new Uri(CoreConstants.OpenTelemetryCollectorEndpoint)));
+#endregion
+
 
 //HybridCache后续替换StackExchangeRedisCache
 //builder.Services.AddStackExchangeRedisCache();
